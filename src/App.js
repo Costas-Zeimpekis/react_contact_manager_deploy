@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { Provider } from './context';
 import Contacts from './components/Contacts';
 import Header from './components/Header';
 
@@ -16,12 +17,14 @@ class App extends Component {
     const name = 'Larry';
 
     return (
-      <div className="App">
-        <Header branding="Contact Manager" />
-        <div className="container">
-          <Contacts />
+      <Provider>
+        <div className="App">
+          <Header branding="Contact Manager" />
+          <div className="container">
+            <Contacts />
+          </div>
         </div>
-      </div>
+      </Provider>
     );
   }
 }
