@@ -50,6 +50,7 @@ class AddContact extends Component {
     });
 
     this.setState({ name: '', email: '', phone: '' });
+    this.props.history.push('/');
   };
 
   onChange = e => {
