@@ -50,20 +50,22 @@ class EditContact extends Component {
       });
     }
 
-    const newContact = {
+    const updContact = {
       name,
       email,
       phone,
       errors: {}
     };
 
-    const res = await axios.post(
-      'https://jsonplaceholder.typicode.com/users',
-      newContact
+    const { id } = this.props.match.params;
+
+    const res = await axios.put(
+      `https://jsonplaceholder.typicode.com/users/${id}`,
+      updContact
     );
 
     dispatch({
-      type: 'ADD_CONTACT',
+      type: 'UPDATE_CONTACT',
       payload: res.data
     });
 
@@ -113,7 +115,7 @@ class EditContact extends Component {
                     error={errors.phone}
                   />
                   <button type="submit" className="btn btn-block btn-light">
-                    Edit Contact
+                    Update Contact
                   </button>
                 </form>
               </div>
